@@ -11,13 +11,13 @@ function sumn(n : int) : int
      { n * (n + 1) / 2}
 
 method sum(n : int) returns (s : int)
-requires n >= 0 ;
+requires n > 0 ;
 ensures s == sumn(n) ; // the equality which we ask Dafny to verify for us
 {
    var i := 0;
    s := 0;
    while i < n
-   invariant i <= n ;
+   invariant 0 <= i <= n ;
    decreases n-i ;
    {
       i := i + 1;
