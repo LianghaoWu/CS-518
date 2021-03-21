@@ -1,5 +1,7 @@
 Homework for week 7
 
+kthEven.dfy can't work
+
 # Problem 1
 
 ## 1. 
