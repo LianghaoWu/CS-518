@@ -4,12 +4,13 @@
 
 method Min(arr : array?< int >) returns (min : int )
 requires arr != null && arr.Length > 0;
-ensures forall j:int :: 0 <= j < arr.Length && arr[j] >= min ;
+ensures forall j:int :: 0 <= j < arr.Length ==> arr[j] >= min ;
 {
   var i := 1;
   min := arr[0];
   while (i < arr.Length)
    invariant i <= arr.Length ;
+   invariant forall k :: 0 <= k < i ==> min <= arr[k];
   {
     if (arr[i] < min)
        {min := arr[i];}
