@@ -1,0 +1,121 @@
+============================== Prover9 ===============================
+Prover9 (32) version Dec-2007, Dec 2007.
+Process 4140 was started by 93508 on LAPTOP-8MVVDDMS,
+Mon Apr  5 11:25:21 2021
+The command was "/cygdrive/c/Program Files (x86)/Prover9-Mace4/bin-win32/prover9".
+============================== end of head ===========================
+
+============================== INPUT =================================
+assign(report_stderr,2).
+set(ignore_option_dependencies).
+if(Prover9).
+% Conditional input included.
+assign(max_seconds,60).
+end_if.
+if(Mace4).
+% Conditional input omitted.
+end_if.
+
+formulas(assumptions).
+m(m(x,y),z) = m(x,m(y,z)).
+m(x,e) = x.
+m(x,i(x)) = e.
+m(e,x) = x.
+m(i(x),x) = e.
+end_of_list.
+
+formulas(goals).
+m(x,e) = e & m(e,x) = e -> x = e.
+end_of_list.
+
+============================== end of input ==========================
+
+% Enabling option dependencies (ignore applies only on input).
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 m(x,e) = e & m(e,x) = e -> x = e # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+m(m(x,y),z) = m(x,m(y,z)).  [assumption].
+m(x,e) = x.  [assumption].
+m(x,i(x)) = e.  [assumption].
+m(e,x) = x.  [assumption].
+m(i(x),x) = e.  [assumption].
+m(c1,e) = e.  [deny(1)].
+m(e,c1) = e.  [deny(1)].
+e != c1.  [deny(1)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:  (no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ e, c1, m, i ]).
+After inverse_order: Function symbol precedence:  function_order([ e, c1, m, i ]).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+
+Auto_process settings:  (no changes).
+
+============================== PROOF =================================
+
+% Proof 1 at 0.01 (+ 0.01) seconds.
+% Length of proof is 6.
+% Level of proof is 3.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 m(x,e) = e & m(e,x) = e -> x = e # label(non_clause) # label(goal).  [goal].
+3 m(x,e) = x.  [assumption].
+7 m(c1,e) = e.  [deny(1)].
+8 c1 = e.  [copy(7),rewrite([3(3)])].
+10 e != c1.  [deny(1)].
+11 $F.  [copy(10),rewrite([8(2)]),xx(a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=8. Kept=6. proofs=1.
+Usable=0. Sos=0. Demods=6. Limbo=6, Disabled=8. Hints=0.
+Weight_deleted=0. Literals_deleted=0.
+Forward_subsumed=1. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=6 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=47. Demod_rewrites=4.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.02.
+User_CPU=0.01, System_CPU=0.01, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 4140 exit (max_proofs) Mon Apr  5 11:25:21 2021

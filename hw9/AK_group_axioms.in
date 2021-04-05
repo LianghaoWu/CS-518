@@ -1,0 +1,9 @@
+formulas(assumptions). 
+m(m(x,y),z) = m(x,m(y,z)).  
+m(x,e) = x.                 
+m(x,i(x)) = e.   
+end_of_list.
+
+formulas(goals).
+(m(x, i(x)) = e -> m(i(x), x) = e) & (m(x, e) = x -> m(e, x) = x). 
+end_of_list.

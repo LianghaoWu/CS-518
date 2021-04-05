@@ -1,0 +1,8 @@
+interpretation( 3, [number = 1,seconds = 0], [
+    function(e, [0]),
+    function(c1, [1]),
+    function(c2, [2]),
+    function(m(_,_), [
+        0,1,2,
+        1,1,1,
+        2,2,2])]).
