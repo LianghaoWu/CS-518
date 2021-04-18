@@ -32,7 +32,11 @@ def Eats(a, b):
     return Or(And(Bird(x), Snail(y)), And(Wolf(x), Fox(y)), And(Bird(x), Caterpillar(x)), And(Wolf(x), Bird(x)), And(Fox(x), Bird(x)), And(Caterpillar(x), Plant(y)), And(Snail(x), Plant(y)))
 
 def Smaller(x: int, y: int):
-    return Or(And(Caterpillar(x), Bird(y)), And(Snail(x), Bird(y)), And(Bird(x), Fox(y)), And(Fox(x), Wolf(y)))
+    return Or(
+            And(Caterpillar(x), Bird(y)), And(Caterpillar(x), Fox(y)), And(Caterpillar(x), Wolf(y)),
+            And(Snail(x), Bird(y)), And(Snail(x), Fox(y)), And(Snail(x), Wolf(y)),
+            And(Bird(x), Fox(y)), And(Bird(x), Wolf(y)),
+            And(Fox(x), Wolf(y)))
 
 wolfIsAnimal = Implies(Wolf(x), Animal(x))
 foxIsAnimal = Implies(Fox(x), Animal(x))
